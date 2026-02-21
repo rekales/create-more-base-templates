@@ -57,6 +57,16 @@ neoForge {
             programArgument("--nogui")
             systemProperty("neoforge.enabledGameTestNamespaces", property("mod_id")!!.toString())
         }
+
+        create("data") {
+            data()
+            programArguments.addAll(
+                "--mod", property("mod_id")!!.toString(),
+                "--all",
+                "--output", file("src/generated/resources/").absolutePath,
+                "--existing", file("src/main/resources/").absolutePath
+            )
+        }
     }
 
     mods {
